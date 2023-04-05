@@ -1,9 +1,9 @@
 <div align="center">
 
-# asdf-docker-compose-v1 [![Build](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/build.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/build.yml) [![Lint](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/lint.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/lint.yml)
+# asdf-docker-compose-v1 [![Build](https://github.com/yilas/asdf-docker-compose-v1/actions/workflows/build.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/build.yml) [![Lint](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/lint.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/lint.yml)
 
 
-[asdf-docker-compose-v1](https://github.com/kompiro/asdf-docker-compose-v1) plugin for the [asdf version manager](https://asdf-vm.com).
+[asdf-docker-compose-v1](https://github.com/yilas/asdf-docker-compose-v1) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
@@ -53,8 +53,8 @@ install & manage versions.
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
-[Thanks goes to these contributors](https://github.com/kompiro/asdf-docker-compose-v1/graphs/contributors)!
+[Thanks goes to these contributors](https://github.com/yilas/asdf-docker-compose-v1/graphs/contributors)!
 
 # License
 
-See [LICENSE](LICENSE) © [Hiroki Kondo](https://github.com/kompiro/)
+See [LICENSE](LICENSE) © [Hiroki Kondo](https://github.com/yilas/)
