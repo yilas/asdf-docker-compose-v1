@@ -27,7 +27,7 @@ Plugin:
 ```shell
 asdf plugin add docker-compose-v1
 # or
-asdf plugin add docker-compose-v1 https://github.com/kompiro/asdf-docker-compose-v1.git
+asdf plugin add docker-compose-v1 https://github.com/yilas/asdf-docker-compose-v1.git
 ```
 
 docker-compose-v1:

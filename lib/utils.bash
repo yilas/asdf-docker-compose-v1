@@ -42,6 +42,7 @@ get_platform() {
   case "$platform" in
   Linux | Darwin)
     [ -z "$silent" ] && msg "Platform '${platform}' supported!"
+    platform=${platform,,}
     ;;
   *)
     fail "Platform '${platform}' not supported!"
@@ -79,7 +80,7 @@ download_release() {
   platform=$(get_platform)
   arch=$(get_arch)
 
-  url="$GH_REPO/releases/download/${version}/docker-compose-${platform}-${arch}"
+  url="$GH_REPO/releases/download/v${version}/docker-compose-${platform}-${arch}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
