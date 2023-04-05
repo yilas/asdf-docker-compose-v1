@@ -42,7 +42,7 @@ get_platform() {
   case "$platform" in
   Linux | Darwin)
     [ -z "$silent" ] && msg "Platform '${platform}' supported!"
-    platform=${platform,,}
+    platform=$(echo ${platform} | tr '[:upper:]' '[:lower:]')
     ;;
   *)
     fail "Platform '${platform}' not supported!"
