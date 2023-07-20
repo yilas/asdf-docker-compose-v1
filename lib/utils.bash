@@ -65,6 +65,7 @@ get_arch() {
 
   case "$(uname -m)" in
   x86_64 | amd64) arch="x86_64" ;;
+  aarch64) arch="aarch64" ;; # Amazon Linux 2023
   *)
     fail "Arch '$(uname -m)' not supported!"
     ;;
