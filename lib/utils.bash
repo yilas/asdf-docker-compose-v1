@@ -79,8 +79,9 @@ download_release() {
     filename="$2"
     platform=$(get_platform)
     arch=$(get_arch)
+    echo "AO ${version}"
 
-    if [[ $version == '1*' ]]; then
+    if [[ $version == 1* ]]; then
         # Handle version 1.*, as they need no v in url and capitalized platform
         url="$GH_REPO/releases/download/${version}/docker-compose-${platform^}-${arch}"
     else
