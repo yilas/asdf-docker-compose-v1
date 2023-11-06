@@ -57,4 +57,4 @@ Contributions of any kind welcome! See the [contributing guide](contributing.md)
 
 # License
 
-See [LICENSE](LICENSE) © [Hiroki Kondo](https://github.com/yilas/)
+See [LICENSE](LICENSE) © [Yann ILAS](https://github.com/yilas/)
