@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-docker-compose-v1 [![Build](https://github.com/yilas/asdf-docker-compose-v1/actions/workflows/build.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/build.yml) [![Lint](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/lint.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/lint.yml)
+# asdf-docker-compose-v1 [![Build](https://github.com/yilas/asdf-docker-compose-v1/actions/workflows/build.yml/badge.svg)](https://github.com/kompiro/asdf-docker-compose-v1/actions/workflows/build.yml) [![Lint](https://github.com/yilas/asdf-docker-compose-v1/actions/workflows/lint.yml/badge.svg)](https://github.com/yilas/asdf-docker-compose-v1/actions/workflows/lint.yml)
 
 
 [asdf-docker-compose-v1](https://github.com/yilas/asdf-docker-compose-v1) plugin for the [asdf version manager](https://asdf-vm.com).
