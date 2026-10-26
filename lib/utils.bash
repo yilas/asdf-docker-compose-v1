@@ -66,9 +66,11 @@ get_arch() {
 
   case "$(uname -m)" in
   x86_64 | amd64) arch="x86_64" ;;
-  aarch64) arch="aarch64" ;; # Amazon Linux 2023
+  aarch64 | arm64)
+    fail "Architecture $(uname -m) has no official Docker Compose V1 binary for Linux/macOS in verified releases (1.25.5, 1.28.6, 1.29.2). Use a supported x86_64 system or manage an alternate build separately."
+    ;;
   *)
-    fail "Arch '$(uname -m)' not supported!"
+    fail "Architecture '$(uname -m)' not supported for Docker Compose V1 (supported: x86_64)."
     ;;
   esac
 
