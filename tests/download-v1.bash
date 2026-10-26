@@ -6,7 +6,7 @@ source "$plugin_dir/lib/utils.bash"
 
 get_platform() { printf '%s' linux; }
 get_arch() { printf '%s' x86_64; }
-curl() { printf '%s\n' "$*" > "$captured_args"; }
+curl() { printf '%s\n' "$*" >"$captured_args"; }
 
 captured_args="$(mktemp)"
 trap 'rm -f "$captured_args"' EXIT
