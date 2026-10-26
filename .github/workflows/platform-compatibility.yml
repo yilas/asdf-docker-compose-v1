@@ -1,0 +1,13 @@
+name: Platform compatibility
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test OS and architecture handling
+        run: bash tests/platform-compatibility.bash
