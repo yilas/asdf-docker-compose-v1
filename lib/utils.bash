@@ -30,8 +30,9 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # Only advertise standalone Docker Compose V1 releases, not Compose V2 tags.
-  list_github_tags | grep -E '^1\\.[0-9]+\\.[0-9]+
+  # Only advertise stable Docker Compose V1 versions.
+  list_github_tags | awk '/^1[.][0-9]+[.][0-9]+/ && !/[^0-9.]/ { print }'
+}
 
 get_platform() {
   local silent=${1:-}
