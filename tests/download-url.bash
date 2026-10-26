@@ -10,7 +10,7 @@ curl() {
   local arg
   for arg in "$@"; do
     case "$arg" in
-      https://*) printf '%s' "$arg" > "$CAPTURE_FILE" ;;
+      https://*) printf '%s' "$arg" >"$CAPTURE_FILE" ;;
     esac
   done
 }
