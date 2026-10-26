@@ -75,7 +75,7 @@ get_arch() {
 }
 
 download_release() {
-  local version filename url
+  local version filename url release_platform platform arch
   version="$1"
   filename="$2"
   platform=$(get_platform)
