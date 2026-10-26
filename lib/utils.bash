@@ -30,8 +30,9 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # This plugin intentionally supports only the Docker Compose 1.x release line.
-  list_github_tags | grep -E '^1\.[0-9]+\.[0-9]+
+  # This plugin intentionally supports only Docker Compose 1.x stable releases.
+  list_github_tags | awk '/^1\.[0-9]+\.[0-9]+$/'
+}
 
 get_platform() {
   local silent=${1:-}
