@@ -81,8 +81,13 @@ download_release() {
   platform=$(get_platform)
   arch=$(get_arch)
 
-  # Docker Compose V1 release tags have no v prefix and use capitalized platform names.
-  url="$GH_REPO/releases/download/${version}/docker-compose-${platform^}-${arch}"
+  # Docker Compose V1 release assets use bare version tags and capitalized OS.
+  case "$platform" in
+    linux) release_platform="Linux" ;;
+    darwin) release_platform="Darwin" ;;
+    *) fail "Platform '$platform' not supported!" ;;
+  esac
+  url="$GH_REPO/releases/download/${version}/docker-compose-${release_platform}-${arch}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
