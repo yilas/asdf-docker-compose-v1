@@ -1,0 +1,11 @@
+name: Regression tests/download-url.bash
+on:
+  push:
+  pull_request:
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run regression test
+        run: bash tests/download-url.bash

@@ -75,13 +75,19 @@ get_arch() {
 }
 
 download_release() {
-  local version filename url
+  local version filename url release_platform platform arch
   version="$1"
   filename="$2"
   platform=$(get_platform)
   arch=$(get_arch)
 
-  url="$GH_REPO/releases/download/v${version}/docker-compose-${platform}-${arch}"
+  # Docker Compose V1 release assets use bare version tags and capitalized OS.
+  case "$platform" in
+  linux) release_platform="Linux" ;;
+  darwin) release_platform="Darwin" ;;
+  *) fail "Platform '$platform' not supported!" ;;
+  esac
+  url="$GH_REPO/releases/download/${version}/docker-compose-${release_platform}-${arch}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
