@@ -83,9 +83,9 @@ download_release() {
 
   # Docker Compose V1 release assets use bare version tags and capitalized OS.
   case "$platform" in
-    linux) release_platform="Linux" ;;
-    darwin) release_platform="Darwin" ;;
-    *) fail "Platform '$platform' not supported!" ;;
+  linux) release_platform="Linux" ;;
+  darwin) release_platform="Darwin" ;;
+  *) fail "Platform '$platform' not supported!" ;;
   esac
   url="$GH_REPO/releases/download/${version}/docker-compose-${release_platform}-${arch}"
 
