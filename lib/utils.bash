@@ -30,7 +30,87 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  list_github_tags
+  # This plugin intentionally supports only the Docker Compose 1.x release line.
+  list_github_tags | grep -E '^1\.[0-9]+\.[0-9]+
+
+get_platform() {
+  local silent=${1:-}
+  local platform=""
+
+  platform="$(uname)"
+
+  case "$platform" in
+  Linux | Darwin)
+    [ -z "$silent" ] && msg "Platform '${platform}' supported!"
+    platform=$(echo ${platform} | tr '[:upper:]' '[:lower:]')
+    ;;
+  *)
+    fail "Platform '${platform}' not supported!"
+    ;;
+  esac
+
+  echo -n "$platform"
+}
+
+msg() {
+  echo -e "\033[32m$1\033[39m" >&2
+}
+
+err() {
+  echo -e "\033[31m$1\033[39m" >&2
+}
+
+get_arch() {
+  local arch=""
+
+  case "$(uname -m)" in
+  x86_64 | amd64) arch="x86_64" ;;
+  aarch64) arch="aarch64" ;; # Amazon Linux 2023
+  *)
+    fail "Arch '$(uname -m)' not supported!"
+    ;;
+  esac
+
+  echo -n $arch
+}
+
+download_release() {
+  local version filename url
+  version="$1"
+  filename="$2"
+  platform=$(get_platform)
+  arch=$(get_arch)
+
+  url="$GH_REPO/releases/download/v${version}/docker-compose-${platform}-${arch}"
+
+  echo "* Downloading $TOOL_NAME release $version..."
+  curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+}
+
+install_version() {
+  local install_type="$1"
+  local version="$2"
+  local install_path="$3"
+
+  if [ "$install_type" != "version" ]; then
+    fail "asdf-$TOOL_NAME supports release installs only"
+  fi
+
+  (
+    mkdir -p "$install_path"
+    cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
+
+    local tool_cmd
+    tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+    test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
+
+    msg "$TOOL_NAME $version installation was successful!"
+  ) || (
+    rm -rf "$install_path"
+    fail "An error ocurred while installing $TOOL_NAME $version."
+  )
+}
+ || true
 }
 
 get_platform() {
