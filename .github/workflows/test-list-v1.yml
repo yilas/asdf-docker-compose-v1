@@ -1,0 +1,13 @@
+name: P0 version listing regression
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run regression test
+        run: bash tests/list-v1.bash

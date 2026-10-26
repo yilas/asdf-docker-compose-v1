@@ -30,7 +30,8 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  list_github_tags
+  # This plugin intentionally supports only Docker Compose 1.x stable releases.
+  list_github_tags | awk '/^1\.[0-9]+\.[0-9]+$/'
 }
 
 get_platform() {
