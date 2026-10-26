@@ -66,9 +66,10 @@ get_arch() {
 
   case "$(uname -m)" in
   x86_64 | amd64) arch="x86_64" ;;
-  aarch64) arch="aarch64" ;; # Amazon Linux 2023
+  aarch64) arch="aarch64" ;; # Retain historical mapping; upstream V1 asset availability varies.
+  arm64) fail "Architecture arm64 has no verified native Docker Compose V1 asset; use x86_64 or a separately managed build." ;;
   *)
-    fail "Arch '$(uname -m)' not supported!"
+    fail "Architecture '$(uname -m)' not supported for Docker Compose V1 (supported: x86_64)."
     ;;
   esac
 
@@ -91,7 +92,7 @@ download_release() {
   url="$GH_REPO/releases/download/${version}/docker-compose-${release_platform}-${arch}"
 
   echo "* Downloading $TOOL_NAME release $version..."
-  curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+  curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url (verify that this V1 release publishes an asset for your OS/architecture)."
 }
 
 install_version() {
